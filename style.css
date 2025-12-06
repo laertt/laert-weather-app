@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #1e1e1e;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+  transition: background 0.5s ease;
+}
+
+.app {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search input {
+  padding: 10px 15px;
+  border-radius: 8px 0 0 8px;
+  border: none;
+  outline: none;
+  width: 200px;
+  font-size: 16px;
+}
+
+.search button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background: #ff4444;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search button:hover {
+  background: #ff6666;
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+.weather-card h2 {
+  margin: 10px 0;
+  font-size: 28px;
+}
+
+.weather-card p {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+.sunny {
+  background: linear-gradient(to top, #fbc2eb, #c6c049);
+}
+
+.cloudy {
+  background: linear-gradient(to top, #bdc3c7, #2c3e50);
+}
+
+.rainy {
+  background: linear-gradient(to top, #373b44, #4286f4);
+}
+
+.snow {
+  background: linear-gradient(to top, #e0eafc, #cfdef3);
+}

@@ -14,20 +14,20 @@ async function getWeather() {
     //ky API i ktyre se suporto shqipen
     const data = await res.json();
     const translations = {
-  "clear sky": "qiell i kthjellët",
-  "few clouds": "re të pakta",
-  "scattered clouds": "re të shpërndara",
-  "broken clouds": "re të thyera",
-  "overcast clouds": "re të dendura",
-  "light rain": "shi i lehtë",
+  "clear sky": "qiell i kthjellet",
+  "few clouds": "re te pakta",
+  "scattered clouds": "re të shperndara",
+  "broken clouds": "re te thyera",
+  "overcast clouds": "re te dendura",
+  "light rain": "shi i lehte",
   "moderate rain": "shi mesatar",
   "heavy intensity rain": "shi i dendur",
-  "shower rain": "shi i rrëpirë",
+  "shower rain": "shi i rrepire",
   "rain": "shi",
-  "thunderstorm": "stuhi me vetëtima",
-  "snow": "borë",
+  "thunderstorm": "stuhi me vetetima",
+  "snow": "bore",
   "mist": "mjergull",
-  "haze": "mjegull e hollë",
+  "haze": "mjegull e holle",
   "fog": "mjergull e dendur"
 };
 let pershkrimi_motit = data.weather[0].description.toLowerCase();
@@ -53,6 +53,7 @@ perkthim_shqip = perkthim_shqip.charAt(0).toUpperCase() + perkthim_shqip.slice(1
     } else {
       document.body.style.background = "#1e1e1e";
     }
+addCityToWatchlist(data.name);
 
     weatherDiv.innerHTML = `
       <h2>${data.name}</h2>
@@ -67,3 +68,50 @@ perkthim_shqip = perkthim_shqip.charAt(0).toUpperCase() + perkthim_shqip.slice(1
     document.body.style.background = "#1e1e1e";
   }
 }
+
+let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+
+function updateWatchlistUI() {
+  const watchlistDiv = document.getElementById("watchlist");
+
+  if (watchlist.length === 0) {
+    watchlistDiv.innerHTML = "<p>Asnje qytet nuk eshte shtuar ende.</p>";
+    return;
+  }
+
+  watchlistDiv.innerHTML = "";
+
+  watchlist.forEach(city => {
+    const item = document.createElement("div");
+    item.className = "watchlist-item";
+
+    item.innerHTML = `
+      <span onclick="loadCity('${city}')">${city}</span>
+      <span class="remove-btn" onclick="removeCity(event, '${city}')">✖</span>
+    `;
+
+    watchlistDiv.appendChild(item);
+  });
+}
+
+function addCityToWatchlist(city) {
+  if (!watchlist.includes(city)) {
+    watchlist.push(city);
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    updateWatchlistUI();
+  }
+}
+
+function removeCity(e, city) {
+  e.stopPropagation(); 
+  watchlist = watchlist.filter(c => c !== city);
+  localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  updateWatchlistUI();
+}
+
+function loadCity(city) {
+  document.getElementById("cityInput").value = city;
+  getWeather(); 
+}
+updateWatchlistUI();
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moti</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <h1>Dashboardi i Motit</h1>
+
+    <div class="search">
+      <input id="cityInput" type="text" placeholder="Vendos qytetin">
+      <button onclick="getWeather()">Kerko</button>
+    </div>
+
+    <div id="weather" class="weather-card">
+      <p>Kerko nje qytet per te pare motin.</p>
+    </div>
+
+    <h2>Lista e Qyteteve te Preferuara</h2>
+    <div id="watchlist" class="weather-card">
+      <p>Asnje qytet nuk eshte shtuar ende.</p>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

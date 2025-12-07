@@ -85,3 +85,39 @@ h1 {
 .snow {
   background: linear-gradient(to top, #e0eafc, #cfdef3);
 }
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #ff4444;
+  color: white;
+  font-size: 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background: #ff6666;
+}
+
+#watchlist {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.watchlist-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+}
+
+.remove-btn {
+  color: #ff4444;
+  cursor: pointer;
+  font-weight: bold;
+}
